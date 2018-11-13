@@ -1,0 +1,117 @@
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!rfpConfig.layout.sidepanel.hidden && rfpConfig.layout.sidepanel.position === 'left'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+
+    <!-- TOOLBAR: Above -->
+    <ng-container *ngIf="rfpConfig.layout.toolbar.position === 'above'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <!-- NAVBAR: Top -->
+    <ng-container>
+        <ng-container *ngTemplateOutlet="topNavbar"></ng-container>
+    </ng-container>
+    <!-- / NAVBAR: Top -->
+
+    <!-- TOOLBAR: Below -->
+    <ng-container *ngIf="rfpConfig.layout.toolbar.position === 'below'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Below -->
+
+    <div id="container-1" class="container">
+
+        <!-- NAVBAR: Left -->
+        <ng-container>
+            <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Left -->
+
+        <div id="container-2" class="container">
+
+            <div id="container-3" class="container" rfpPerfectScrollbar
+                 [rfpPerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+                <!-- CONTENT -->
+                <content></content>
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below -->
+                <ng-container *ngIf="rfpConfig.layout.footer.position === 'above-static'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container>
+                <!-- / FOOTER: Below -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER: Above -->
+    <ng-container *ngIf="rfpConfig.layout.footer.position === 'above-fixed'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+    </ng-container>
+    <!-- FOOTER: Above -->
+
+</div>
+
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!rfpConfig.layout.sidepanel.hidden && rfpConfig.layout.sidepanel.position === 'right'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<!-- QUICK PANEL -->
+<rfp-sidebar name="quickPanel" position="right" class="quick-panel">
+    <quick-panel></quick-panel>
+</rfp-sidebar>
+<!-- / QUICK PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!rfpConfig.layout.toolbar.hidden"
+             [ngClass]="rfpConfig.layout.toolbar.customBackgroundColor === true ? rfpConfig.layout.toolbar.position + ' ' + rfpConfig.layout.toolbar.background : rfpConfig.layout.toolbar.position">
+    </toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+    <footer *ngIf="!rfpConfig.layout.footer.hidden"
+            [ngClass]="rfpConfig.layout.footer.customBackgroundColor === true ? rfpConfig.layout.footer.position + ' ' + rfpConfig.layout.footer.background : rfpConfig.layout.footer.position">
+    </footer>
+</ng-template>
+<!-- / FOOTER -->
+
+<!-- TOP NAVBAR -->
+<ng-template #topNavbar>
+    <navbar variant="horizontal-style-1"
+            class="top-navbar" fxHide fxShow.gt-md
+            *ngIf="!rfpConfig.layout.navbar.hidden">
+    </navbar>
+</ng-template>
+<!-- / TOP NAVBAR -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <rfp-sidebar name="navbar" class="navbar-rfp-sidebar"
+                  [folded]="rfpConfig.layout.navbar.folded"
+                  *ngIf="!rfpConfig.layout.navbar.hidden">
+        <navbar [variant]="rfpConfig.layout.navbar.variant" class="left-navbar"></navbar>
+    </rfp-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->

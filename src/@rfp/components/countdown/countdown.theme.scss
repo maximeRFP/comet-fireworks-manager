@@ -1,0 +1,17 @@
+@mixin rfp-countdown-theme($theme) {
+
+    $foreground: map-get($theme, foreground);
+
+    rfp-countdown {
+
+        .rfp-countdown {
+
+            .time {
+
+                .title {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
+        }
+    }
+}

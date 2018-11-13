@@ -1,0 +1,11 @@
+@mixin rfp-search-bar-theme($theme) {
+
+    $background: map-get($theme, background);
+
+    .rfp-search-bar {
+
+        &.expanded {
+            background-color: map-get($background, background);
+        }
+    }
+}
