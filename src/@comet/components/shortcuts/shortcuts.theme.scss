@@ -1,0 +1,11 @@
+@mixin comet-shortcuts-theme($theme) {
+
+    $background: map-get($theme, background);
+
+    #comet-shortcuts {
+
+        &.show-mobile-panel {
+            background-color: map-get($background, background);
+        }
+    }
+}

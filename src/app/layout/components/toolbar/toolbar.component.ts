@@ -4,8 +4,8 @@ import { takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
 
-import { RfpConfigService } from '@rfp/services/config.service';
-import { RfpSidebarService } from '@rfp/components/sidebar/sidebar.service';
+import { CometConfigService } from '@comet/services/config.service';
+import { CometSidebarService } from '@comet/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
 
@@ -32,13 +32,13 @@ export class ToolbarComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {RfpConfigService} _rfpConfigService
-     * @param {RfpSidebarService} _rfpSidebarService
+     * @param {CometConfigService} _cometConfigService
+     * @param {CometSidebarService} _cometSidebarService
      * @param {TranslateService} _translateService
      */
     constructor(
-        private _rfpConfigService: RfpConfigService,
-        private _rfpSidebarService: RfpSidebarService,
+        private _cometConfigService: CometConfigService,
+        private _cometSidebarService: CometSidebarService,
         private _translateService: TranslateService
     )
     {
@@ -100,7 +100,7 @@ export class ToolbarComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to the config changes
-        this._rfpConfigService.config
+        this._cometConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((settings) => {
                 this.horizontalNavbar = settings.layout.navbar.position === 'top';
@@ -133,7 +133,7 @@ export class ToolbarComponent implements OnInit, OnDestroy
      */
     toggleSidebarOpen(key): void
     {
-        this._rfpSidebarService.getSidebar(key).toggleOpen();
+        this._cometSidebarService.getSidebar(key).toggleOpen();
     }
 
     /**

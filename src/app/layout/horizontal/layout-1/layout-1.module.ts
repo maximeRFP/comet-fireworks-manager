@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material';
 
-import { RfpSidebarModule, RfpThemeOptionsModule } from '@rfp/components';
-import { RfpSharedModule } from '@rfp/shared.module';
+import { CometSidebarModule, CometThemeOptionsModule } from '@comet/components';
+import { CometSharedModule } from '@comet/shared.module';
 
 import { ContentModule } from 'app/layout/components/content/content.module';
 import { FooterModule } from 'app/layout/components/footer/footer.module';
@@ -19,9 +19,9 @@ import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layou
     imports     : [
         MatSidenavModule,
 
-        RfpSharedModule,
-        RfpSidebarModule,
-        RfpThemeOptionsModule,
+        CometSharedModule,
+        CometSidebarModule,
+        CometThemeOptionsModule,
 
         ContentModule,
         FooterModule,

@@ -1,8 +1,8 @@
-@import "src/@rfp/scss/rfp";
+@import "src/@comet/scss/comet";
 
-rfp-sidebar {
+comet-sidebar {
 
-    &.navbar-rfp-sidebar {
+    &.navbar-comet-sidebar {
         overflow: hidden;
 
         &.folded:not(.unfolded) {

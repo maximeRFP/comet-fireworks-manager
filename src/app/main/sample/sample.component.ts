@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { RfpTranslationLoaderService } from '@rfp/services/translation-loader.service';
+import { CometTranslationLoaderService } from '@comet/services/translation-loader.service';
 
 import { locale as english } from './i18n/en';
 import { locale as turkish } from './i18n/tr';
@@ -15,12 +15,12 @@ export class SampleComponent
     /**
      * Constructor
      *
-     * @param {RfpTranslationLoaderService} _rfpTranslationLoaderService
+     * @param {CometTranslationLoaderService} _cometTranslationLoaderService
      */
     constructor(
-        private _rfpTranslationLoaderService: RfpTranslationLoaderService
+        private _cometTranslationLoaderService: CometTranslationLoaderService
     )
     {
-        this._rfpTranslationLoaderService.loadTranslations(english, turkish);
+        this._cometTranslationLoaderService.loadTranslations(english, turkish);
     }
 }

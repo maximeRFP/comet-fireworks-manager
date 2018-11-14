@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class RfpPage {
+export class CometPage {
     navigateTo(): any {
         return browser.get('/');
     }

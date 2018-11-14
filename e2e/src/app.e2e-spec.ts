@@ -1,14 +1,14 @@
-import { RfpPage } from './app.po';
+import { CometPage } from './app.po';
 
-describe('Rfp App', () => {
-    let page: RfpPage;
+describe('Comet App', () => {
+    let page: CometPage;
 
     beforeEach(() => {
-        page = new RfpPage();
+        page = new CometPage();
     });
 
     it('should display welcome message', () => {
         page.navigateTo();
-        expect(page.getParagraphText()).toEqual('Welcome to Rfp!');
+        expect(page.getParagraphText()).toEqual('Welcome to Comet!');
     });
 });

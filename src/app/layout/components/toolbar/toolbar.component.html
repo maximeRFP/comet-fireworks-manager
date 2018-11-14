@@ -13,12 +13,12 @@
 
             <div fxLayout="row" fxLayoutAlign="start center" *ngIf="horizontalNavbar">
                 <div class="logo ml-16">
-                    <img class="logo-icon" src="assets/images/logos/rfp.svg">
+                    <img class="logo-icon" src="assets/images/logos/comet.svg">
                 </div>
             </div>
 
             <div class="px-8 px-md-16">
-                <rfp-shortcuts [navigation]="navigation"></rfp-shortcuts>
+                <comet-shortcuts [navigation]="navigation"></comet-shortcuts>
             </div>
 
         </div>
@@ -55,7 +55,7 @@
 
             <div class="toolbar-separator"></div>
 
-            <rfp-search-bar (input)="search($event)"></rfp-search-bar>
+            <comet-search-bar (input)="search($event)"></comet-search-bar>
 
             <div class="toolbar-separator"></div>
 

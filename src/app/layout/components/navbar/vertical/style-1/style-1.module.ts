@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
-import { RfpNavigationModule } from '@rfp/components';
-import { RfpSharedModule } from '@rfp/shared.module';
+import { CometNavigationModule } from '@comet/components';
+import { CometSharedModule } from '@comet/shared.module';
 
 import { NavbarVerticalStyle1Component } from 'app/layout/components/navbar/vertical/style-1/style-1.component';
 
@@ -14,8 +14,8 @@ import { NavbarVerticalStyle1Component } from 'app/layout/components/navbar/vert
         MatButtonModule,
         MatIconModule,
 
-        RfpSharedModule,
-        RfpNavigationModule
+        CometSharedModule,
+        CometNavigationModule
     ],
     exports     : [
         NavbarVerticalStyle1Component

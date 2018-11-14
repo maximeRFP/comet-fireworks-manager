@@ -1,5 +1,5 @@
 <!-- SIDE PANEL -->
-<ng-container *ngIf="!rfpConfig.layout.sidepanel.hidden && rfpConfig.layout.sidepanel.position === 'left'">
+<ng-container *ngIf="!cometConfig.layout.sidepanel.hidden && cometConfig.layout.sidepanel.position === 'left'">
 
     <!-- PANEL CONTENT -->
 
@@ -9,16 +9,16 @@
 <div id="main">
 
     <!-- TOOLBAR: Above fixed -->
-    <ng-container *ngIf="rfpConfig.layout.toolbar.position === 'above-fixed'">
+    <ng-container *ngIf="cometConfig.layout.toolbar.position === 'above-fixed'">
         <ng-container *ngTemplateOutlet="toolbar"></ng-container>
     </ng-container>
     <!-- / TOOLBAR: Above fixed -->
 
-    <div id="container-1" class="container" rfpPerfectScrollbar
-         [rfpPerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+    <div id="container-1" class="container" cometPerfectScrollbar
+         [cometPerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
 
         <!-- TOOLBAR: Above static -->
-        <ng-container *ngIf="rfpConfig.layout.toolbar.position === 'above-static'">
+        <ng-container *ngIf="cometConfig.layout.toolbar.position === 'above-static'">
             <ng-container *ngTemplateOutlet="toolbar"></ng-container>
         </ng-container>
         <!-- / TOOLBAR: Above static -->
@@ -26,19 +26,19 @@
         <div id="container-2" class="container">
 
             <!-- NAVBAR: Left -->
-            <ng-container *ngIf="rfpConfig.layout.navbar.position === 'left'">
+            <ng-container *ngIf="cometConfig.layout.navbar.position === 'left'">
                 <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
             </ng-container>
             <!-- / NAVBAR: Left -->
 
             <!-- CONTENT -->
             <content
-                [ngClass]="{'ml-32':rfpConfig.layout.navbar.position === 'left', 'mr-32':rfpConfig.layout.navbar.position === 'right'}">
+                [ngClass]="{'ml-32':cometConfig.layout.navbar.position === 'left', 'mr-32':cometConfig.layout.navbar.position === 'right'}">
             </content>
             <!-- / CONTENT -->
 
             <!-- NAVBAR: Right -->
-            <ng-container *ngIf="rfpConfig.layout.navbar.position === 'right'">
+            <ng-container *ngIf="cometConfig.layout.navbar.position === 'right'">
                 <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
             </ng-container>
             <!-- / NAVBAR: Right -->
@@ -46,7 +46,7 @@
         </div>
 
         <!-- FOOTER: Above static -->
-        <ng-container *ngIf="rfpConfig.layout.footer.position === 'above-static'">
+        <ng-container *ngIf="cometConfig.layout.footer.position === 'above-static'">
             <ng-container *ngTemplateOutlet="footer"></ng-container>
         </ng-container>
         <!-- FOOTER: Above static -->
@@ -54,7 +54,7 @@
     </div>
 
     <!-- FOOTER: Above fixed -->
-    <ng-container *ngIf="rfpConfig.layout.footer.position === 'above-fixed'">
+    <ng-container *ngIf="cometConfig.layout.footer.position === 'above-fixed'">
         <ng-container *ngTemplateOutlet="footer"></ng-container>
     </ng-container>
     <!-- FOOTER: Above fixed -->
@@ -62,7 +62,7 @@
 </div>
 
 <!-- SIDE PANEL -->
-<ng-container *ngIf="!rfpConfig.layout.sidepanel.hidden && rfpConfig.layout.sidepanel.position === 'right'">
+<ng-container *ngIf="!cometConfig.layout.sidepanel.hidden && cometConfig.layout.sidepanel.position === 'right'">
 
     <!-- PANEL CONTENT -->
 
@@ -70,9 +70,9 @@
 <!-- / SIDE PANEL -->
 
 <!-- QUICK PANEL -->
-<rfp-sidebar name="quickPanel" position="right" class="quick-panel">
+<comet-sidebar name="quickPanel" position="right" class="quick-panel">
     <quick-panel></quick-panel>
-</rfp-sidebar>
+</comet-sidebar>
 <!-- / QUICK PANEL -->
 
 <!-- ----------------------------------------------------------------------------------------------------- -->
@@ -81,38 +81,38 @@
 
 <!-- TOOLBAR -->
 <ng-template #toolbar>
-    <toolbar *ngIf="!rfpConfig.layout.toolbar.hidden"
-             [ngClass]="rfpConfig.layout.toolbar.customBackgroundColor === true ? rfpConfig.layout.toolbar.position + ' ' + rfpConfig.layout.toolbar.background : rfpConfig.layout.toolbar.position">
+    <toolbar *ngIf="!cometConfig.layout.toolbar.hidden"
+             [ngClass]="cometConfig.layout.toolbar.customBackgroundColor === true ? cometConfig.layout.toolbar.position + ' ' + cometConfig.layout.toolbar.background : cometConfig.layout.toolbar.position">
     </toolbar>
 </ng-template>
 <!-- / TOOLBAR -->
 
 <!-- FOOTER -->
 <ng-template #footer>
-    <footer *ngIf="!rfpConfig.layout.footer.hidden"
-            [ngClass]="rfpConfig.layout.footer.customBackgroundColor === true ? rfpConfig.layout.footer.position + ' ' + rfpConfig.layout.footer.background : rfpConfig.layout.footer.position">
+    <footer *ngIf="!cometConfig.layout.footer.hidden"
+            [ngClass]="cometConfig.layout.footer.customBackgroundColor === true ? cometConfig.layout.footer.position + ' ' + cometConfig.layout.footer.background : cometConfig.layout.footer.position">
     </footer>
 </ng-template>
 <!-- / FOOTER -->
 
 <!-- LEFT NAVBAR -->
 <ng-template #leftNavbar>
-    <rfp-sidebar name="navbar" class="navbar-rfp-sidebar"
-                  [folded]="rfpConfig.layout.navbar.folded"
+    <comet-sidebar name="navbar" class="navbar-comet-sidebar"
+                  [folded]="cometConfig.layout.navbar.folded"
                   lockedOpen="gt-md"
-                  *ngIf="!rfpConfig.layout.navbar.hidden">
-        <navbar [variant]="rfpConfig.layout.navbar.variant" class="left-navbar"></navbar>
-    </rfp-sidebar>
+                  *ngIf="!cometConfig.layout.navbar.hidden">
+        <navbar [variant]="cometConfig.layout.navbar.variant" class="left-navbar"></navbar>
+    </comet-sidebar>
 </ng-template>
 <!-- / LEFT NAVBAR -->
 
 <!-- RIGHT NAVBAR -->
 <ng-template #rightNavbar>
-    <rfp-sidebar name="navbar" position="right" class="navbar-rfp-sidebar"
-                  [folded]="rfpConfig.layout.navbar.folded"
+    <comet-sidebar name="navbar" position="right" class="navbar-comet-sidebar"
+                  [folded]="cometConfig.layout.navbar.folded"
                   lockedOpen="gt-md"
-                  *ngIf="!rfpConfig.layout.navbar.hidden">
-        <navbar [variant]="rfpConfig.layout.navbar.variant" class="right-navbar"></navbar>
-    </rfp-sidebar>
+                  *ngIf="!cometConfig.layout.navbar.hidden">
+        <navbar [variant]="cometConfig.layout.navbar.variant" class="right-navbar"></navbar>
+    </comet-sidebar>
 </ng-template>
 <!-- / RIGHT NAVBAR -->
