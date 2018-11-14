@@ -3,11 +3,11 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "rfp": {
+        "comet": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
-            "prefix": "rfp",
+            "prefix": "comet",
             "schematics": {
                 "@schematics/angular:component": {
                     "styleext": "scss"
@@ -74,25 +74,25 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "rfp:build"
+                        "browserTarget": "comet:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "rfp:build:production"
+                            "browserTarget": "comet:build:production"
                         },
                         "hmr": {
                             "hmr": true,
-                            "browserTarget": "rfp:build:hmr"
+                            "browserTarget": "comet:build:hmr"
                         },
                         "ec": {
-                            "browserTarget": "rfp:build:ec"
+                            "browserTarget": "comet:build:ec"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "rfp:build"
+                        "browserTarget": "comet:build"
                     }
                 },
                 "test": {
@@ -126,7 +126,7 @@
                 }
             }
         },
-        "rfp-e2e": {
+        "comet-e2e": {
             "root": "e2e/",
             "projectType": "application",
             "prefix": "",
@@ -135,11 +135,11 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "rfp:serve"
+                        "devServerTarget": "comet:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "rfp:serve:production"
+                            "devServerTarget": "comet:serve:production"
                         }
                     }
                 },
@@ -155,5 +155,5 @@
             }
         }
     },
-    "defaultProject": "rfp"
+    "defaultProject": "comet"
 }

@@ -1,21 +1,21 @@
 // -----------------------------------------------------------------------------------------------------
-// @ Custom color maps for Rfp
+// @ Custom color maps for Comet
 // -----------------------------------------------------------------------------------------------------
-$rfp-white: (
+$comet-white: (
     500: white,
     contrast: (
         500: $dark-primary-text
     )
 );
 
-$rfp-black: (
+$comet-black: (
     500: black,
     contrast: (
         500: $light-primary-text,
     )
 );
 
-$rfp-navy: (
+$comet-navy: (
     50: #ECECEE,
     100: #C5C6CB,
     200: #9EA1A9,
@@ -48,14 +48,14 @@ $rfp-navy: (
     )
 );
 
-// Generate Rfp color classes for custom palettes
+// Generate Comet color classes for custom palettes
 $custom_palettes: (
-    rfp-white: $rfp-white,
-    rfp-black: $rfp-black,
-    rfp-navy: $rfp-navy
+    comet-white: $comet-white,
+    comet-black: $comet-black,
+    comet-navy: $comet-navy
 );
 
-@include rfp-color-classes($custom_palettes);
+@include comet-color-classes($custom_palettes);
 
 // -----------------------------------------------------------------------------------------------------
 // @ Typography
@@ -94,7 +94,7 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Define the primary, accent and warn palettes
-$default-primary-palette: mat-palette($rfp-navy);
+$default-primary-palette: mat-palette($comet-navy);
 $default-accent-palette: mat-palette($mat-light-blue, 600, 400, 700);
 $default-warn-palette: mat-palette($mat-red);
 
@@ -108,20 +108,20 @@ body.theme-default {
     // Create an Angular Material theme from the $theme map
     @include angular-material-theme($theme);
 
-    // Apply the theme to the Rfp Core
-    @include rfp-core-theme($theme);
+    // Apply the theme to the Comet Core
+    @include comet-core-theme($theme);
 
     // Apply the theme to the user components
     @include components-theme($theme);
 
-    // Generate Rfp color classes for primary, accent and warn colors
+    // Generate Comet color classes for primary, accent and warn colors
     $palettes: (
         primary: $default-primary-palette,
         accent: $default-accent-palette,
         warn: $default-warn-palette
     );
 
-    @include rfp-color-classes($palettes);
+    @include comet-color-classes($palettes);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ body.theme-default {
 // -----------------------------------------------------------------------------------------------------
 
 // Define the primary, accent and warn palettes
-$yellow-light-theme-primary-palette: mat-palette($rfp-navy, 600, 400, 700);
+$yellow-light-theme-primary-palette: mat-palette($comet-navy, 600, 400, 700);
 $yellow-light-theme-accent-palette: mat-palette($mat-yellow, 600, 400, 700);
 $yellow-light-theme-warn-palette: mat-palette($mat-red);
 
@@ -143,20 +143,20 @@ body.theme-yellow-light {
     // Generate the Angular Material theme
     @include angular-material-theme($yellow-light-theme);
 
-    // Apply the theme to the Rfp Core
-    @include rfp-core-theme($yellow-light-theme);
+    // Apply the theme to the Comet Core
+    @include comet-core-theme($yellow-light-theme);
 
     // Apply the theme to the user components
     @include components-theme($yellow-light-theme);
 
-    // Generate Rfp color classes for primary, accent and warn colors
+    // Generate Comet color classes for primary, accent and warn colors
     $palettes: (
         primary: $yellow-light-theme-primary-palette,
         accent: $yellow-light-theme-accent-palette,
         warn: $yellow-light-theme-warn-palette
     );
 
-    @include rfp-color-classes($palettes);
+    @include comet-color-classes($palettes);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -178,20 +178,20 @@ body.theme-blue-gray-dark {
     // Generate the Angular Material theme
     @include angular-material-theme($blue-gray-dark-theme);
 
-    // Apply the theme to the Rfp Core
-    @include rfp-core-theme($blue-gray-dark-theme);
+    // Apply the theme to the Comet Core
+    @include comet-core-theme($blue-gray-dark-theme);
 
     // Apply the theme to the user components
     @include components-theme($blue-gray-dark-theme);
 
-    // Generate Rfp color classes for primary, accent and warn colors
+    // Generate Comet color classes for primary, accent and warn colors
     $palettes: (
         primary: $blue-gray-dark-theme-primary-palette,
         accent: $blue-gray-dark-theme-accent-palette,
         warn: $blue-gray-dark-theme-warn-palette
     );
 
-    @include rfp-color-classes($palettes);
+    @include comet-color-classes($palettes);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -213,18 +213,18 @@ body.theme-pink-dark {
     // Generate the Angular Material theme
     @include angular-material-theme($pink-dark-theme);
 
-    // Apply the theme to the Rfp Core
-    @include rfp-core-theme($pink-dark-theme);
+    // Apply the theme to the Comet Core
+    @include comet-core-theme($pink-dark-theme);
 
     // Apply the theme to the user components
     @include components-theme($pink-dark-theme);
 
-    // Generate Rfp color classes for primary, accent and warn colors
+    // Generate Comet color classes for primary, accent and warn colors
     $palettes: (
         primary: $pink-dark-theme-primary-palette,
         accent: $pink-dark-theme-accent-palette,
         warn: $pink-dark-theme-warn-palette
     );
 
-    @include rfp-color-classes($palettes);
+    @include comet-color-classes($palettes);
 }

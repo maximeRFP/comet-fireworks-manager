@@ -5,24 +5,24 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { RfpConfigService } from '@rfp/services/config.service';
-import { RfpNavigationService } from '@rfp/components/navigation/navigation.service';
-import { RfpSidebarService } from '@rfp/components/sidebar/sidebar.service';
-import { RfpSplashScreenService } from '@rfp/services/splash-screen.service';
-import { RfpTranslationLoaderService } from '@rfp/services/translation-loader.service';
+import { CometConfigService } from '@comet/services/config.service';
+import { CometNavigationService } from '@comet/components/navigation/navigation.service';
+import { CometSidebarService } from '@comet/components/sidebar/sidebar.service';
+import { CometSplashScreenService } from '@comet/services/splash-screen.service';
+import { CometTranslationLoaderService } from '@comet/services/translation-loader.service';
 
 import { navigation } from 'app/navigation/navigation';
 import { locale as navigationEnglish } from 'app/navigation/i18n/en';
 import { locale as navigationTurkish } from 'app/navigation/i18n/tr';
 
 @Component({
-    selector   : 'rfp-app',
+    selector   : 'comet-app',
     templateUrl: './app.component.html',
     styleUrls  : ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy
 {
-    rfpConfig: any;
+    cometConfig: any;
     navigation: any;
 
     // Private
@@ -32,21 +32,21 @@ export class AppComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {DOCUMENT} document
-     * @param {RfpConfigService} _rfpConfigService
-     * @param {RfpNavigationService} _rfpNavigationService
-     * @param {RfpSidebarService} _rfpSidebarService
-     * @param {RfpSplashScreenService} _rfpSplashScreenService
-     * @param {RfpTranslationLoaderService} _rfpTranslationLoaderService
+     * @param {CometConfigService} _cometConfigService
+     * @param {CometNavigationService} _cometNavigationService
+     * @param {CometSidebarService} _cometSidebarService
+     * @param {CometSplashScreenService} _cometSplashScreenService
+     * @param {CometTranslationLoaderService} _cometTranslationLoaderService
      * @param {Platform} _platform
      * @param {TranslateService} _translateService
      */
     constructor(
         @Inject(DOCUMENT) private document: any,
-        private _rfpConfigService: RfpConfigService,
-        private _rfpNavigationService: RfpNavigationService,
-        private _rfpSidebarService: RfpSidebarService,
-        private _rfpSplashScreenService: RfpSplashScreenService,
-        private _rfpTranslationLoaderService: RfpTranslationLoaderService,
+        private _cometConfigService: CometConfigService,
+        private _cometNavigationService: CometNavigationService,
+        private _cometSidebarService: CometSidebarService,
+        private _cometSplashScreenService: CometSplashScreenService,
+        private _cometTranslationLoaderService: CometTranslationLoaderService,
         private _translateService: TranslateService,
         private _platform: Platform
     )
@@ -55,10 +55,10 @@ export class AppComponent implements OnInit, OnDestroy
         this.navigation = navigation;
 
         // Register the navigation to the service
-        this._rfpNavigationService.register('main', this.navigation);
+        this._cometNavigationService.register('main', this.navigation);
 
         // Set the main navigation as our current navigation
-        this._rfpNavigationService.setCurrentNavigation('main');
+        this._cometNavigationService.setCurrentNavigation('main');
 
         // Add languages
         this._translateService.addLangs(['en', 'tr']);
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy
         this._translateService.setDefaultLang('en');
 
         // Set the navigation translations
-        this._rfpTranslationLoaderService.loadTranslations(navigationEnglish, navigationTurkish);
+        this._cometTranslationLoaderService.loadTranslations(navigationEnglish, navigationTurkish);
 
         // Use a language
         this._translateService.use('en');
@@ -125,14 +125,14 @@ export class AppComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to config changes
-        this._rfpConfigService.config
+        this._cometConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
 
-                this.rfpConfig = config;
+                this.cometConfig = config;
 
                 // Boxed
-                if ( this.rfpConfig.layout.width === 'boxed' )
+                if ( this.cometConfig.layout.width === 'boxed' )
                 {
                     this.document.body.classList.add('boxed');
                 }
@@ -152,7 +152,7 @@ export class AppComponent implements OnInit, OnDestroy
                     }
                 }
 
-                this.document.body.classList.add(this.rfpConfig.colorTheme);
+                this.document.body.classList.add(this.cometConfig.colorTheme);
             });
     }
 
@@ -177,6 +177,6 @@ export class AppComponent implements OnInit, OnDestroy
      */
     toggleSidebarOpen(key): void
     {
-        this._rfpSidebarService.getSidebar(key).toggleOpen();
+        this._cometSidebarService.getSidebar(key).toggleOpen();
     }
 }

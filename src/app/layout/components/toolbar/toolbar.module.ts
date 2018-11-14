@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 
-import { RfpSearchBarModule, RfpShortcutsModule } from '@rfp/components';
-import { RfpSharedModule } from '@rfp/shared.module';
+import { CometSearchBarModule, CometShortcutsModule } from '@comet/components';
+import { CometSharedModule } from '@comet/shared.module';
 
 import { ToolbarComponent } from 'app/layout/components/toolbar/toolbar.component';
 
@@ -18,9 +18,9 @@ import { ToolbarComponent } from 'app/layout/components/toolbar/toolbar.componen
         MatMenuModule,
         MatToolbarModule,
 
-        RfpSharedModule,
-        RfpSearchBarModule,
-        RfpShortcutsModule
+        CometSharedModule,
+        CometSearchBarModule,
+        CometShortcutsModule
     ],
     exports     : [
         ToolbarComponent

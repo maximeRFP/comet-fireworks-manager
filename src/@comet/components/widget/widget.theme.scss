@@ -1,0 +1,14 @@
+@mixin comet-widget-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    comet-widget {
+
+        > .comet-widget-front,
+        > .comet-widget-back {
+            background: map-get($background, card);
+            border-color: map-get($foreground, divider);
+        }
+    }
+}

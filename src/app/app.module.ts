@@ -8,11 +8,11 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
 
-import { RfpModule } from '@rfp/rfp.module';
-import { RfpSharedModule } from '@rfp/shared.module';
-import { RfpProgressBarModule, RfpSidebarModule, RfpThemeOptionsModule } from '@rfp/components';
+import { CometModule } from '@comet/comet.module';
+import { CometSharedModule } from '@comet/shared.module';
+import { CometProgressBarModule, CometSidebarModule, CometThemeOptionsModule } from '@comet/components';
 
-import { rfpConfig } from 'app/rfp-config';
+import { cometConfig } from 'app/comet-config';
 
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
@@ -44,12 +44,12 @@ const appRoutes: Routes = [
         MatButtonModule,
         MatIconModule,
 
-        // Rfp modules
-        RfpModule.forRoot(rfpConfig),
-        RfpProgressBarModule,
-        RfpSharedModule,
-        RfpSidebarModule,
-        RfpThemeOptionsModule,
+        // Comet modules
+        CometModule.forRoot(cometConfig),
+        CometProgressBarModule,
+        CometSharedModule,
+        CometSidebarModule,
+        CometThemeOptionsModule,
 
         // App modules
         LayoutModule,

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { RfpSidebarModule } from '@rfp/components';
-import { RfpSharedModule } from '@rfp/shared.module';
+import { CometSidebarModule } from '@comet/components';
+import { CometSharedModule } from '@comet/shared.module';
 
 import { ContentModule } from 'app/layout/components/content/content.module';
 import { FooterModule } from 'app/layout/components/footer/footer.module';
@@ -19,8 +19,8 @@ import { VerticalLayout1Component } from 'app/layout/vertical/layout-1/layout-1.
     imports     : [
         RouterModule,
 
-        RfpSharedModule,
-        RfpSidebarModule,
+        CometSharedModule,
+        CometSidebarModule,
 
         ContentModule,
         FooterModule,

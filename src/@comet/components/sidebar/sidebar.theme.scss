@@ -1,0 +1,16 @@
+@mixin comet-sidebar-theme($theme) {
+
+    $background: map-get($theme, background);
+
+    comet-sidebar {
+        background: map-get($background, background);
+    }
+
+    .comet-sidebar-overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+
+        &.comet-sidebar-overlay-invisible {
+            background-color: transparent;
+        }
+    }
+}

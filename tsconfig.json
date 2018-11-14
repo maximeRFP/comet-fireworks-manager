@@ -9,8 +9,8 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "paths": {
-            "@rfp": [
-                "@rfp/"
+            "@comet": [
+                "@comet/"
             ]
         },
         "target": "es5",

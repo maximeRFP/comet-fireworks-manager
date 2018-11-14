@@ -3,10 +3,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { delay, filter, take, takeUntil } from 'rxjs/operators';
 
-import { RfpConfigService } from '@rfp/services/config.service';
-import { RfpNavigationService } from '@rfp/components/navigation/navigation.service';
-import { RfpPerfectScrollbarDirective } from '@rfp/directives/rfp-perfect-scrollbar/rfp-perfect-scrollbar.directive';
-import { RfpSidebarService } from '@rfp/components/sidebar/sidebar.service';
+import { CometConfigService } from '@comet/services/config.service';
+import { CometNavigationService } from '@comet/components/navigation/navigation.service';
+import { CometPerfectScrollbarDirective } from '@comet/directives/comet-perfect-scrollbar/comet-perfect-scrollbar.directive';
+import { CometSidebarService } from '@comet/components/sidebar/sidebar.service';
 
 @Component({
     selector     : 'navbar-vertical-style-1',
@@ -16,25 +16,25 @@ import { RfpSidebarService } from '@rfp/components/sidebar/sidebar.service';
 })
 export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
 {
-    rfpConfig: any;
+    cometConfig: any;
     navigation: any;
 
     // Private
-    private _rfpPerfectScrollbar: RfpPerfectScrollbarDirective;
+    private _cometPerfectScrollbar: CometPerfectScrollbarDirective;
     private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      *
-     * @param {RfpConfigService} _rfpConfigService
-     * @param {RfpNavigationService} _rfpNavigationService
-     * @param {RfpSidebarService} _rfpSidebarService
+     * @param {CometConfigService} _cometConfigService
+     * @param {CometNavigationService} _cometNavigationService
+     * @param {CometSidebarService} _cometSidebarService
      * @param {Router} _router
      */
     constructor(
-        private _rfpConfigService: RfpConfigService,
-        private _rfpNavigationService: RfpNavigationService,
-        private _rfpSidebarService: RfpSidebarService,
+        private _cometConfigService: CometConfigService,
+        private _cometNavigationService: CometNavigationService,
+        private _cometSidebarService: CometSidebarService,
         private _router: Router
     )
     {
@@ -47,24 +47,24 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     // Directive
-    @ViewChild(RfpPerfectScrollbarDirective)
-    set directive(theDirective: RfpPerfectScrollbarDirective)
+    @ViewChild(CometPerfectScrollbarDirective)
+    set directive(theDirective: CometPerfectScrollbarDirective)
     {
         if ( !theDirective )
         {
             return;
         }
 
-        this._rfpPerfectScrollbar = theDirective;
+        this._cometPerfectScrollbar = theDirective;
 
         // Update the scrollbar on collapsable item toggle
-        this._rfpNavigationService.onItemCollapseToggled
+        this._cometNavigationService.onItemCollapseToggled
             .pipe(
                 delay(500),
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe(() => {
-                this._rfpPerfectScrollbar.update();
+                this._cometPerfectScrollbar.update();
             });
 
         // Scroll to the active item position
@@ -83,7 +83,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
                                   activeItemOffsetParentTop = activeNavItem.offsetParent.offsetTop,
                                   scrollDistance            = activeItemOffsetTop - activeItemOffsetParentTop - (48 * 3) - 168;
 
-                            this._rfpPerfectScrollbar.scrollToTop(scrollDistance);
+                            this._cometPerfectScrollbar.scrollToTop(scrollDistance);
                         }
                     });
                 }
@@ -105,28 +105,28 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe(() => {
-                    if ( this._rfpSidebarService.getSidebar('navbar') )
+                    if ( this._cometSidebarService.getSidebar('navbar') )
                     {
-                        this._rfpSidebarService.getSidebar('navbar').close();
+                        this._cometSidebarService.getSidebar('navbar').close();
                     }
                 }
             );
 
         // Subscribe to the config changes
-        this._rfpConfigService.config
+        this._cometConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
-                this.rfpConfig = config;
+                this.cometConfig = config;
             });
 
         // Get current navigation
-        this._rfpNavigationService.onNavigationChanged
+        this._cometNavigationService.onNavigationChanged
             .pipe(
                 filter(value => value !== null),
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe(() => {
-                this.navigation = this._rfpNavigationService.getCurrentNavigation();
+                this.navigation = this._cometNavigationService.getCurrentNavigation();
             });
     }
 
@@ -149,7 +149,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
      */
     toggleSidebarOpened(): void
     {
-        this._rfpSidebarService.getSidebar('navbar').toggleOpen();
+        this._cometSidebarService.getSidebar('navbar').toggleOpen();
     }
 
     /**
@@ -157,6 +157,6 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
      */
     toggleSidebarFolded(): void
     {
-        this._rfpSidebarService.getSidebar('navbar').toggleFold();
+        this._cometSidebarService.getSidebar('navbar').toggleFold();
     }
 }

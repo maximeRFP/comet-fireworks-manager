@@ -1,8 +1,8 @@
-<div class="navbar-top" [ngClass]="rfpConfig.layout.navbar.secondaryBackground">
+<div class="navbar-top" [ngClass]="cometConfig.layout.navbar.secondaryBackground">
 
     <div class="logo">
-        <img class="logo-icon" src="assets/images/logos/rfp.svg">
-        <span class="logo-text secondary-text">RFP</span>
+        <img class="logo-icon" src="assets/images/logos/comet.svg">
+        <span class="logo-text secondary-text">COMET</span>
     </div>
 
     <div class="buttons">
@@ -22,21 +22,21 @@
 </div>
 
 
-<div class="navbar-scroll-container" [ngClass]="rfpConfig.layout.navbar.primaryBackground"
-     rfpPerfectScrollbar [rfpPerfectScrollbarOptions]="{suppressScrollX: true}">
+<div class="navbar-scroll-container" [ngClass]="cometConfig.layout.navbar.primaryBackground"
+     cometPerfectScrollbar [cometPerfectScrollbarOptions]="{suppressScrollX: true}">
 
-    <div class="user" fxLayout="column" [ngClass]="rfpConfig.layout.navbar.secondaryBackground">
+    <div class="user" fxLayout="column" [ngClass]="cometConfig.layout.navbar.secondaryBackground">
 
         <div class="h3 username">Charlie Adams</div>
         <div class="h5 email hint-text mt-8">adams.charlie@mail.com</div>
-        <div class="avatar-container" [ngClass]="rfpConfig.layout.navbar.primaryBackground">
+        <div class="avatar-container" [ngClass]="cometConfig.layout.navbar.primaryBackground">
             <img class="avatar" src="assets/images/avatars/Velazquez.jpg">
         </div>
 
     </div>
 
     <div class="navbar-content">
-        <rfp-navigation class="material2" layout="vertical"></rfp-navigation>
+        <comet-navigation class="material2" layout="vertical"></comet-navigation>
     </div>
 
 </div>

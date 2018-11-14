@@ -1,12 +1,6 @@
-# Rfp - Angular
+# Comet Fireworks Manager- Angular
 
 Material Design Admin Template with Angular 7+ and Angular Material
-
-## The Community
-
-Share your ideas, discuss Rfp and help each other.
-
-[Click here](http://rfptheme.com/community) to see our Community page.
 
 ## Development server
 

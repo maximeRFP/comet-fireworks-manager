@@ -1,6 +1,6 @@
-import { RfpNavigation } from '@rfp/types';
+import { CometNavigation } from '@comet/types';
 
-export const navigation: RfpNavigation[] = [
+export const navigation: CometNavigation[] = [
     {
         id       : 'applications',
         title    : 'Applications',

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { RfpConfigService } from '@rfp/services/config.service';
+import { CometConfigService } from '@comet/services/config.service';
 import { navigation } from 'app/navigation/navigation';
 
 @Component({
@@ -13,7 +13,7 @@ import { navigation } from 'app/navigation/navigation';
 })
 export class VerticalLayout3Component implements OnInit, OnDestroy
 {
-    rfpConfig: any;
+    cometConfig: any;
     navigation: any;
 
     // Private
@@ -22,10 +22,10 @@ export class VerticalLayout3Component implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {RfpConfigService} _rfpConfigService
+     * @param {CometConfigService} _cometConfigService
      */
     constructor(
-        private _rfpConfigService: RfpConfigService
+        private _cometConfigService: CometConfigService
     )
     {
         // Set the defaults
@@ -45,10 +45,10 @@ export class VerticalLayout3Component implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to config changes
-        this._rfpConfigService.config
+        this._cometConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
-                this.rfpConfig = config;
+                this.cometConfig = config;
             });
     }
 

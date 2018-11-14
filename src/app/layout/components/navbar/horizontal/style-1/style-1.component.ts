@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { RfpConfigService } from '@rfp/services/config.service';
-import { RfpNavigationService } from '@rfp/components/navigation/navigation.service';
-import { RfpSidebarService } from '@rfp/components/sidebar/sidebar.service';
+import { CometConfigService } from '@comet/services/config.service';
+import { CometNavigationService } from '@comet/components/navigation/navigation.service';
+import { CometSidebarService } from '@comet/components/sidebar/sidebar.service';
 
 @Component({
     selector     : 'navbar-horizontal-style-1',
@@ -14,7 +14,7 @@ import { RfpSidebarService } from '@rfp/components/sidebar/sidebar.service';
 })
 export class NavbarHorizontalStyle1Component implements OnInit, OnDestroy
 {
-    rfpConfig: any;
+    cometConfig: any;
     navigation: any;
 
     // Private
@@ -23,14 +23,14 @@ export class NavbarHorizontalStyle1Component implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {RfpConfigService} _rfpConfigService
-     * @param {RfpNavigationService} _rfpNavigationService
-     * @param {RfpSidebarService} _rfpSidebarService
+     * @param {CometConfigService} _cometConfigService
+     * @param {CometNavigationService} _cometNavigationService
+     * @param {CometSidebarService} _cometSidebarService
      */
     constructor(
-        private _rfpConfigService: RfpConfigService,
-        private _rfpNavigationService: RfpNavigationService,
-        private _rfpSidebarService: RfpSidebarService
+        private _cometConfigService: CometConfigService,
+        private _cometNavigationService: CometNavigationService,
+        private _cometSidebarService: CometSidebarService
     )
     {
         // Set the private defaults
@@ -47,20 +47,20 @@ export class NavbarHorizontalStyle1Component implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Get current navigation
-        this._rfpNavigationService.onNavigationChanged
+        this._cometNavigationService.onNavigationChanged
             .pipe(
                 filter(value => value !== null),
                 takeUntil(this._unsubscribeAll)
             )
             .subscribe(() => {
-                this.navigation = this._rfpNavigationService.getCurrentNavigation();
+                this.navigation = this._cometNavigationService.getCurrentNavigation();
             });
 
         // Subscribe to the config changes
-        this._rfpConfigService.config
+        this._cometConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
-                this.rfpConfig = config;
+                this.cometConfig = config;
             });
     }
 
