@@ -16,7 +16,7 @@
         "e2e": "ng e2e",
         "bundle-report": "webpack-bundle-analyzer dist/stats.json",
         "electron": "ng build --prod && electron .",
-        "pack": "electron-packager . --overwrite --platform=darwin,linux,win32 --prune=true --out=release-builds --ignore=/node_modules --ignore=/e2e --ignore=/src"
+        "pack": "ng build --prod && electron-packager . --overwrite --platform=darwin,linux,win32 --prune=true --out=release-builds --ignore=/node_modules --ignore=/e2e --ignore=/src"
     },
     "private": true,
     "dependencies": {
