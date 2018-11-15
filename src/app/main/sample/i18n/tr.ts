@@ -3,6 +3,10 @@ export const locale = {
     data: {
         'SAMPLE': {
             'HELLO': 'Merhaba Dünya!'
-        }
-    }
+        },
+        'EMPLOYE'        : {
+            'TITLE': 'Employés',
+        },
+    },
+
 };

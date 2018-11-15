@@ -20,6 +20,14 @@ export const navigation: CometNavigation[] = [
                     bg       : '#F44336',
                     fg       : '#FFFFFF'
                 }
+            },
+            {
+                id       : 'employe',
+                title    : 'Employés',
+                translate: 'NAV.EMPLOYE.TITLE',
+                type     : 'item',
+                icon     : 'people',
+                url      : '/employes'
             }
         ]
     }

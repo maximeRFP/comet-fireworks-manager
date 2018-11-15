@@ -44,6 +44,7 @@
         "@swimlane/ngx-datatable": "13.1.0",
         "@swimlane/ngx-dnd": "5.1.0",
         "@types/prismjs": "1.9.0",
+        "@types/socket.io-client": "1.4.32",
         "angular-calendar": "0.26.3",
         "angular-in-memory-web-api": "0.6.1",
         "chart.js": "2.7.3",
@@ -62,6 +63,7 @@
         "prismjs": "1.15.0",
         "rxjs": "6.3.3",
         "rxjs-compat": "6.3.3",
+        "socket.io-client": "2.1.1",
         "web-animations-js": "2.3.1",
         "zone.js": "0.8.26"
     },

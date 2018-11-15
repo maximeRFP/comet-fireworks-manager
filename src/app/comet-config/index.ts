@@ -32,7 +32,7 @@ export const cometConfig: CometConfig = {
         footer   : {
             customBackgroundColor: true,
             background           : 'comet-navy-900',
-            hidden               : false,
+            hidden               : true,
             position             : 'below-fixed'
         },
         sidepanel: {

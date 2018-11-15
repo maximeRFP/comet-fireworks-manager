@@ -1,26 +1,32 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatButtonModule, MatIconModule } from '@angular/material';
-import { TranslateModule } from '@ngx-translate/core';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterModule, Routes} from '@angular/router';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {MatButtonModule, MatIconModule} from '@angular/material';
+import {TranslateModule} from '@ngx-translate/core';
 import 'hammerjs';
 
-import { CometModule } from '@comet/comet.module';
-import { CometSharedModule } from '@comet/shared.module';
-import { CometProgressBarModule, CometSidebarModule, CometThemeOptionsModule } from '@comet/components';
+import {CometModule} from '@comet/comet.module';
+import {CometSharedModule} from '@comet/shared.module';
+import {CometProgressBarModule, CometSidebarModule, CometThemeOptionsModule} from '@comet/components';
 
-import { cometConfig } from 'app/comet-config';
+import {cometConfig} from 'app/comet-config';
 
-import { AppComponent } from 'app/app.component';
-import { LayoutModule } from 'app/layout/layout.module';
-import { SampleModule } from 'app/main/sample/sample.module';
+import {AppComponent} from 'app/app.component';
+import {LayoutModule} from 'app/layout/layout.module';
+import {SampleModule} from 'app/main/sample/sample.module';
+import {AppStoreModule} from './store/store.module';
+import {SocketService} from "../@comet/services/socket.service";
 
 const appRoutes: Routes = [
     {
-        path      : '**',
+        path        : 'employes',
+        loadChildren: './main/employe/employe.module#EmployeModule'
+    },
+    {
+        path: '**',
         redirectTo: 'sample'
     }
 ];
@@ -29,7 +35,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -53,12 +59,13 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
+        AppStoreModule,
         SampleModule
     ],
-    bootstrap   : [
+    providers: [SocketService],
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }

@@ -4,7 +4,11 @@
 
 export const environment = {
     production: false,
-    hmr       : false
+    hmr       : false,
+    socket: {
+        baseUrl: 'http://localhost:3003',
+        config: {}
+    }
 };
 
 /*

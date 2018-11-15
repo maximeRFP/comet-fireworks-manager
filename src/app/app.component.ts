@@ -1,32 +1,38 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Platform } from '@angular/cdk/platform';
-import { TranslateService } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {Platform} from '@angular/cdk/platform';
+import {TranslateService} from '@ngx-translate/core';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
-import { CometConfigService } from '@comet/services/config.service';
-import { CometNavigationService } from '@comet/components/navigation/navigation.service';
-import { CometSidebarService } from '@comet/components/sidebar/sidebar.service';
-import { CometSplashScreenService } from '@comet/services/splash-screen.service';
-import { CometTranslationLoaderService } from '@comet/services/translation-loader.service';
+import {CometConfigService} from '@comet/services/config.service';
+import {CometNavigationService} from '@comet/components/navigation/navigation.service';
+import {CometSidebarService} from '@comet/components/sidebar/sidebar.service';
+import {CometSplashScreenService} from '@comet/services/splash-screen.service';
+import {CometTranslationLoaderService} from '@comet/services/translation-loader.service';
 
-import { navigation } from 'app/navigation/navigation';
-import { locale as navigationEnglish } from 'app/navigation/i18n/en';
-import { locale as navigationTurkish } from 'app/navigation/i18n/tr';
+import {navigation} from 'app/navigation/navigation';
+import {locale as navigationEnglish} from 'app/navigation/i18n/en';
+import {locale as navigationTurkish} from 'app/navigation/i18n/tr';
+import {Observable} from "rxjs/Rx";
+import {SocketService} from "../@comet/services/socket.service";
+import {Store} from "@ngrx/store";
+import * as fromRoot from './store';
+import * as uiActions from './store/actions/ui.actions';
 
 @Component({
-    selector   : 'comet-app',
+    selector: 'comet-app',
     templateUrl: './app.component.html',
-    styleUrls  : ['./app.component.scss']
+    styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy
-{
+export class AppComponent implements OnInit, OnDestroy {
     cometConfig: any;
     navigation: any;
 
     // Private
     private _unsubscribeAll: Subject<any>;
+
+    socketStatus$: Observable<string>;
 
     /**
      * Constructor
@@ -39,18 +45,19 @@ export class AppComponent implements OnInit, OnDestroy
      * @param {CometTranslationLoaderService} _cometTranslationLoaderService
      * @param {Platform} _platform
      * @param {TranslateService} _translateService
+     * @param {SocketService} _socket
+     * @param {Store} _store
      */
-    constructor(
-        @Inject(DOCUMENT) private document: any,
-        private _cometConfigService: CometConfigService,
-        private _cometNavigationService: CometNavigationService,
-        private _cometSidebarService: CometSidebarService,
-        private _cometSplashScreenService: CometSplashScreenService,
-        private _cometTranslationLoaderService: CometTranslationLoaderService,
-        private _translateService: TranslateService,
-        private _platform: Platform
-    )
-    {
+    constructor(@Inject(DOCUMENT) private document: any,
+                private _cometConfigService: CometConfigService,
+                private _cometNavigationService: CometNavigationService,
+                private _cometSidebarService: CometSidebarService,
+                private _cometSplashScreenService: CometSplashScreenService,
+                private _cometTranslationLoaderService: CometTranslationLoaderService,
+                private _translateService: TranslateService,
+                private _platform: Platform,
+                private _socket: SocketService,
+                private _store: Store<fromRoot.State>) {
         // Get default navigation
         this.navigation = navigation;
 
@@ -106,8 +113,7 @@ export class AppComponent implements OnInit, OnDestroy
          */
 
         // Add is-mobile class to the body if the platform is mobile
-        if ( this._platform.ANDROID || this._platform.IOS )
-        {
+        if (this._platform.ANDROID || this._platform.IOS) {
             this.document.body.classList.add('is-mobile');
         }
 
@@ -122,8 +128,7 @@ export class AppComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Subscribe to config changes
         this._cometConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
@@ -132,35 +137,39 @@ export class AppComponent implements OnInit, OnDestroy
                 this.cometConfig = config;
 
                 // Boxed
-                if ( this.cometConfig.layout.width === 'boxed' )
-                {
+                if (this.cometConfig.layout.width === 'boxed') {
                     this.document.body.classList.add('boxed');
                 }
-                else
-                {
+                else {
                     this.document.body.classList.remove('boxed');
                 }
 
                 // Color theme - Use normal for loop for IE11 compatibility
-                for ( let i = 0; i < this.document.body.classList.length; i++ )
-                {
+                for (let i = 0; i < this.document.body.classList.length; i++) {
                     const className = this.document.body.classList[i];
 
-                    if ( className.startsWith('theme-') )
-                    {
+                    if (className.startsWith('theme-')) {
                         this.document.body.classList.remove(className);
                     }
                 }
 
                 this.document.body.classList.add(this.cometConfig.colorTheme);
             });
+
+        //
+        this.socketStatus$ = this._store
+            .select(fromRoot.getSocketStatus)
+            .map(connected => connected ? 'connected' : 'disconnected');
+
+        this._socket.connected$
+            .map(connected => new uiActions.SetSocketConnected(connected))
+            .subscribe(this._store);
     }
 
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
@@ -175,8 +184,7 @@ export class AppComponent implements OnInit, OnDestroy
      *
      * @param key
      */
-    toggleSidebarOpen(key): void
-    {
+    toggleSidebarOpen(key): void {
         this._cometSidebarService.getSidebar(key).toggleOpen();
     }
 }
